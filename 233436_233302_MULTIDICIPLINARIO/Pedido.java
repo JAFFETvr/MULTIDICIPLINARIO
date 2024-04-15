@@ -73,20 +73,23 @@ public class Pedido {
             System.out.println("--------------------------------------------------------");
             System.out.println("Ingrese el nombre del cliente que desea hacer la compra:");
           String nombreCliente = leer.nextLine();
-          setNombrecliente(nombreCliente);
-          nuevoPedido.setNombrecliente(nombreCliente); 
+          
 
-          System.out.println("el nombre es :"+nuevoPedido.getNombrecliente());
           do{
+           
          do {
             for (int i = 0; i < listaClientes.size(); i++) {
                 Cliente cliente = listaClientes.get(i);
                 
                 if (cliente.getName().equals(nombreCliente)) {
                     clienteEncontrado = true;
+                    setNombrecliente(nombreCliente);
+                    nuevoPedido.setNombrecliente(nombreCliente);
+                    System.out.println("el nombre es :"+nuevoPedido.getNombrecliente());
+
                     int exis;
                     do {
-                        System.out.println("HOLA , QUE DESEA COMPRAR\n1)UNIFORMES(PRECIO:$200)\n2)PLAYERAS(PRECIO:$250)\n3)PANTALONES(PRECIO:$150)");
+                        System.out.println("HOLA , Ingrese lo que llevara su pedido\n1.Uniformes(PRECIO:$200)\n2.Playeras(PRECIO:$250)\n3.Pantalones(PRECIO:$150)");
                          exis = leer.nextInt();
                     } while (exis<1|| exis >3);
                   
@@ -95,12 +98,12 @@ public class Pedido {
                     if (exis==1) {
                         int opc1;
                        do {
-                        System.out.println("INGRESA EL TIPO DE UNIFORME\n1)ESCOLARES\n2)DEPORTIVOS");
+                        System.out.println("Ingresa el tipo de uniformes\n1.Escolares\n2.Deportivos");
                          opc1=leer.nextInt();
                        } while (opc1<1 || opc1 >2);
                     
                        if (opc1==1) {
-                       System.out.println("INGRESE LA CANTIDAD DE UNIFORMES A COMPRAR.");
+                       System.out.println("Ingrese la cantidad de uniformes a comprar.");
                            can=leer.nextInt();
 
                            int cantidadTelas = 0;
@@ -141,23 +144,22 @@ public class Pedido {
                             }
                         }
 
-                           for (Material materials : inventario.getLisMaterial()) {
-                            switch (materials.getName().toLowerCase()) {
+                        for (Material material : inventario.getLisMaterial()) {
+                            switch (material.getName().toLowerCase()) {
                                 case "telas":
-                                    materials.setCantidad(materials.getCantidad() - cantidadTelas);
+                                    material.setCantidad(material.getCantidad() - cantidadTelas);
                                     break;
                                 case "botones":
-                                    materials.setCantidad(materials.getCantidad() - cantidadBotones);
+                                    material.setCantidad(material.getCantidad() - cantidadBotones);
                                     break;
                                 case "hilos":
-                                    materials.setCantidad(materials.getCantidad() - cantidadHilos);
+                                    material.setCantidad(material.getCantidad() - cantidadHilos);
                                     break;
                                 case "cierres":
-                                    materials.setCantidad(materials.getCantidad() - cantidadCierres);
+                                    material.setCantidad(material.getCantidad() - cantidadCierres);
                                     break;
                             }
                         }
-                          
                           String tipo ="  Escolares";
                           String name = "Uniforme";
                            int precio =200;
@@ -165,15 +167,15 @@ public class Pedido {
                            precioTotal= precioTotal+can*precio;
                            String talla;
                           String color;
-                          System.out.println("INGRESE LA TALLA");
+                          System.out.println("Ingrese la talla");
                           talla=leer.next();
                           leer.nextLine();
-                          System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                          System.out.println("Ingrese el color de su producto");
                           color =leer.nextLine();
-                          System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                          System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                           String sexo = leer.nextLine();
                           uniformes.validacionProducto();
-                          System.out.println("SU TOTAL  DE TODOS SERIA : "+precioTotal);
+                          System.out.println("Su total de todo sera : "+precioTotal);
                         
    
                         Uniformes unifor = new Uniformes();
@@ -192,7 +194,7 @@ public class Pedido {
                     }
                        if (opc1==2) {
 
-                           System.out.println("INGRESE LA CANTIDAD DE UNIFORMES A COMPRAR.");
+                           System.out.println("Ingrese la cnatidad de uniformes a comprar.");
                             can=leer.nextInt();
 
 
@@ -257,15 +259,15 @@ public class Pedido {
                            precioTotal= precioTotal+can*precio;
                           String talla;
                           String color;
-                          System.out.println("INGRESE LA TALLA");
+                          System.out.println("Ingrese la talla");
                           talla=leer.next();
                           leer.nextLine();
-                          System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                          System.out.println("Ingrese el color de su producto");
                           color =leer.nextLine();
-                          System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                          System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                           String sexo = leer.nextLine();
                           uniformes.validacionProducto();
-                          System.out.println("SU TOTAL SERIA : "+precioTotal);
+                          System.out.println("Su total sera : "+precioTotal);
                          
    
                         Uniformes unifor = new Uniformes();
@@ -284,7 +286,7 @@ public class Pedido {
                     }
                     if (exis==2) {
                        
-                       System.out.println("INGRESE LA CANTIDAD DE PLAYERAS A COMPRAR.");
+                       System.out.println("Ingrese la cantidad de playeras a comprar .");
                        can=leer.nextInt();
 
 
@@ -348,15 +350,15 @@ public class Pedido {
                        String talla;
                       String color;
                       String name ="Playeras";
-                      System.out.println("INGRESE LA TALLA");
+                      System.out.println("Ingrese la talla ");
                       talla=leer.next();
                       leer.nextLine();
-                      System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                      System.out.println("Ingrese el color de su producto");
                       color =leer.nextLine();
-                      System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                      System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                       String sexo = leer.nextLine();
                      playeras.validacionProducto();
-                      System.out.println("SU TOTAL SERIA : "+precioTotal);
+                      System.out.println("Su total sera : "+precioTotal);
                      
    
                     Playeras playera = new Playeras();
@@ -372,7 +374,7 @@ public class Pedido {
                      leer.nextLine();
                     }
                     if (exis==3) {
-                       System.out.println("INGRESE LA CANTIDAD DE PANTALONES A COMPRAR.");
+                       System.out.println("Ingrese la cantidad de pantalones a comprar .");
                         can=leer.nextInt();
 
                     
@@ -437,16 +439,16 @@ public class Pedido {
                        String talla;
                       String color;
                       String name= "Pantalones ";
-                      System.out.println("INGRESE LA TALLA");
+                      System.out.println("Ingrese la talla");
                       talla=leer.next();
                       leer.nextLine();
-                      System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                      System.out.println("Ingrese el color de su producto ");
                       color =leer.nextLine();
-                      System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                      System.out.println("Ingrese si sera  Masculino(M)/Femenino(F)");
                       String sexo = leer.nextLine();
                       pantalones.validacionProducto();
                       
-                      System.out.println("SU TOTAL SERIA : "+precioTotal);
+                      System.out.println("Su total sera: "+precioTotal);
    
                     Pantalones pantalon = new Pantalones();
                      pantalon.setColor(color);
@@ -469,7 +471,7 @@ public class Pedido {
                    
                 }
                 }while (!clienteEncontrado);
-                    System.out.println("DESEA AGREGAR MAS PRODUCTOS\n1)SI\n2)NO");
+                    System.out.println("Dedea agregar mas productos\n1)SI\n2)NO");
                     opc2=leer.nextInt();
 
 
@@ -519,7 +521,7 @@ public class Pedido {
                     
                     int opc;
                    do {
-                    System.out.println("INGRESE EL TIPO DE ENTREGA DEL PEDIDO\n1)NORMAL\n2)ENVIO($50 COSTO EXTRA)");
+                    System.out.println("Ingresa el tipo de entrega del pedido\n1.Normal\n2.Envio($50 COSTO EXTRA)");
                     opc = leer.nextInt();
                    } while (opc<1||opc>2);
                     
@@ -536,7 +538,7 @@ public class Pedido {
                             if (pedido instanceof Pedido) {
                                 total = precioTotal+50; 
                                 setPrecioTotal(total);
-                                System.out.println("SU TOTAL SERÍA: $" + total);
+                                System.out.println("Su total es : $" + total);
                                 break;
                             }
                         }
@@ -565,15 +567,20 @@ public class Pedido {
                 String name; 
                 long Ntelefonico;
                 String direccion ; 
-                int opc;
+                int opc=0;
               do {
                 System.out.println("-----------");
-                System.out.println("INGRESE EL NOMBRE DEL CLIENTE A REGISTRAR ");
+                System.out.println("Ingrese el nombre del cliente a registrar ");
                 name = leer.nextLine();
-                System.out.println("INGRESE EL NUMERO DE TELEFONO DEL CLIENTE ");
+                if (verificarNombreCliente(name)) {
+                    System.out.println("Este nombre ya está registrado. Intente con otro nombre.");
+                    continue; // Volver al inicio del bucle y solicitar nuevamente el nombre
+                }
+                
+                System.out.println("Ingrese el numero de telefono ");
                 Ntelefonico = leer.nextLong();
                 leer.nextLine();
-                System.out.println("INGRESE LA DIRECCION DEL CLIENTE");
+                System.out.println("Ingrese la dirrecion de cliente");
                 direccion= leer.nextLine();
                 
         
@@ -584,7 +591,7 @@ public class Pedido {
                 
                 listaClientes.add(cliente);
         
-                System.out.println("DESEA AGREGR OTRO CLIENTE\n1)SI\n2)Cualquier otro numero para no");
+                System.out.println("Desea agregar otro cliente\n1.SI\n2.Cualquier otro numero para no");
                 opc=leer.nextInt();
                 leer.nextLine();
         
@@ -598,11 +605,21 @@ public class Pedido {
             }
         } while (bandera);
     }
+    
 
+    public boolean verificarNombreCliente(String nombre) {
 
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getName().equalsIgnoreCase(nombre)) {
+                return true; 
+            }
+        }
+        return false;
+    }
+  
 
-
-   public void gestionarCliente() {
+    
+    public void gestionarCliente(ArrayList<Pedido> listaPedi2) {
     boolean bandera = true;
     do {
         try {
@@ -636,6 +653,7 @@ public class Pedido {
                
                 System.out.println("Ingrese el nuevo nombre del cliente:");
                 String nuevoNombre = leer.nextLine();
+                
                 System.out.println("Ingrese el nuevo número de teléfono:");
                 long nuevoTelefono = leer.nextLong();
                 leer.nextLine(); 
@@ -646,6 +664,11 @@ public class Pedido {
                 clienteEncontrado.setNumTelefono(nuevoTelefono);
                 clienteEncontrado.setDireccion(nuevaDireccion);
                 System.out.println("La información del cliente ha sido actualizada.");
+                for (Pedido pedido : listaPedi2) {
+                    if (pedido.getNombrecliente().equals(nombreCliente)) {
+                        pedido.setNombrecliente(nuevoNombre);
+                    }
+                }
                 break;
             case 2:
                 // Eliminar cliente
@@ -677,6 +700,7 @@ public class Pedido {
     public void verPedidos(ArrayList<Pedido> listaPedi) {
 
         System.out.println("----------------------------------------------------");
+         double totalVentas=0;
         for (Pedido pedido : listaPedi) {
             System.out.println("ID del pedido: " + pedido.getId());
             System.out.println("Cliente :"+pedido.getNombrecliente());
@@ -708,9 +732,14 @@ public class Pedido {
                     System.out.println("Género: " + pantalon.getSexo());
                 }
             }
-           System.out.println(" Total $"+pedido.getPrecioTotal());
+            double precioTotalPedido = pedido.getPrecioTotal(); 
+            totalVentas += precioTotalPedido; 
+            System.out.println(" Total $" + precioTotalPedido);
             System.out.println("----------------------------------------------------");
         }
+        System.out.println("Total de ventas obtenido: $" + totalVentas);
+        System.out.println("----------------------------------------------------");
+
        
     }
 
@@ -745,9 +774,9 @@ public class Pedido {
                  
                       do {
                         System.out.println("Opciones:");
-                        System.out.println("1) Agregar producto");
-                        System.out.println("2) Eliminar producto");
-                        System.out.println("3) Regresar");
+                        System.out.println("1. Agregar producto");
+                        System.out.println("2. Eliminar producto");
+                        System.out.println("3. Regresar");
                         System.out.println("Ingrese su opción:");
                         opc = leer.nextInt();
                       } while (opc<1||opc>3);
@@ -756,9 +785,9 @@ public class Pedido {
                     switch (opc) {
                         case 1:
             System.out.println("Seleccione el producto que desea agregar:");
-            System.out.println("1) Uniformes");
-            System.out.println("2) Playeras");
-            System.out.println("3) Pantalones");
+            System.out.println("1. Uniformes");
+            System.out.println("2. Playeras");
+            System.out.println("3. Pantalones");
             System.out.println("Ingrese su opción:");
             int opcProducto = leer.nextInt();
             
@@ -770,12 +799,12 @@ public class Pedido {
                 case 1:
                 int opc1;
                 do {
-                 System.out.println("INGRESA EL TIPO DE UNIFORME\n1)ESCOLARES\n2)DEPORTIVOS");
+                 System.out.println("Ingresa el tipo de uniforme\n1.Escolares\n2,Deportivos");
                   opc1=leer.nextInt();
                 } while (opc1<1 || opc1 >2);
              
                 if (opc1==1) {
-                System.out.println("INGRESE LA CANTIDAD DE UNIFORMES A COMPRAR.");
+                System.out.println("Ingrese la cantidad de uniformes a comprar.");
                     can=leer.nextInt();
                     cantidadUniformes = can;
         
@@ -841,12 +870,12 @@ public class Pedido {
                     precioTotal= precioTotal+can*precio;
                     String talla;
                    String color;
-                   System.out.println("INGRESE LA TALLA");
+                   System.out.println("Ingrese la talla");
                    talla=leer.next();
                    leer.nextLine();
-                   System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                   System.out.println("Ingrese el color del producto");
                    color =leer.nextLine();
-                   System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                   System.out.println("Ingrese si seraMAsculino(M)/Femenino(F)");
                    String sexo = leer.nextLine();
                    uniformes.validacionProducto();
                    ;
@@ -867,7 +896,7 @@ public class Pedido {
              }
                 if (opc1==2) {
         
-                    System.out.println("INGRESE LA CANTIDAD DE UNIFORMES A COMPRAR.");
+                    System.out.println("Ingrese la cantidad a comprar.");
                      can=leer.nextInt();
                      cantidadUniformes = can;
         
@@ -933,12 +962,12 @@ public class Pedido {
                     precioTotal= precioTotal+can*precio;
                    String talla;
                    String color;
-                   System.out.println("INGRESE LA TALLA");
+                   System.out.println("Ingrese la talla");
                    talla=leer.next();
                    leer.nextLine();
-                   System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                   System.out.println("Ingrese el color de su producto");
                    color =leer.nextLine();
-                   System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                   System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                    String sexo = leer.nextLine();
                    uniformes.validacionProducto();
                  
@@ -960,7 +989,7 @@ public class Pedido {
                 break;
                 case 2:
                     // Lógica para agregar playeras (similar al caso de uniformes)
-                    System.out.println("INGRESE LA CANTIDAD DE PLAYERAS A COMPRAR.");
+                    System.out.println("Ingrese la cantidad de playeras a comprar.");
                                can=leer.nextInt();
         
         
@@ -1024,12 +1053,12 @@ public class Pedido {
                                String talla;
                               String color;
                               String name ="Playeras";
-                              System.out.println("INGRESE LA TALLA");
+                              System.out.println("Ingrese la talla");
                               talla=leer.next();
                               leer.nextLine();
-                              System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                              System.out.println("Ingrese el color de su producto");
                               color =leer.nextLine();
-                              System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                              System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                               String sexo = leer.nextLine();
                              playeras.validacionProducto();
                            ;
@@ -1049,7 +1078,7 @@ public class Pedido {
                             pedidoActual.setPrecioTotal(precioTotal);
                     break;
                 case 3:
-                    System.out.println("INGRESE LA CANTIDAD DE PANTALONES A COMPRAR.");
+                    System.out.println("Ingrese la cantidad de playeras a comprar.");
                     can=leer.nextInt();
         
                 
@@ -1114,12 +1143,12 @@ public class Pedido {
                    String talla2;
                   String color2;
                   String name2= "Pantalones ";
-                  System.out.println("INGRESE LA TALLA");
+                  System.out.println("Ingrese la talla");
                   talla2=leer.next();
                   leer.nextLine();
-                  System.out.println("INGRESE EL COLOR DE SU PRODUCTO");
+                  System.out.println("Ingrese el color de su producto");
                   color2 =leer.nextLine();
-                  System.out.println("INGRESE SI SERA MASCULINO(M)/FEMENINO(F)");
+                  System.out.println("Ingrese si sera Masculino(M)/Femenino(F)");
                   String sexo2 = leer.nextLine();
                   pantalones.validacionProducto();
                
