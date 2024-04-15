@@ -85,7 +85,7 @@ public class Principal {
         int opc;
         do{
 
-            System.out.println("Que movimiento te gustaia hacer\n1)Agregar cliente\n2)Eliminar cliente\n3) ver lista clientes");
+            System.out.println("Que movimiento te gustaia hacer\n1.Agregar cliente\n2.Gestionar cliente\n3.ver lista clientes");
             opc = leer.nextInt();
        
             if(opc==1){
@@ -93,7 +93,7 @@ public class Principal {
         }
 
         if(opc==2){
-            pedido.gestionarCliente();
+            pedido.gestionarCliente(listaPedi);
         }
         if (opc==3){
             cliente.verClientes(listaClientes);
@@ -106,7 +106,7 @@ public class Principal {
         Scanner leer = new Scanner(System.in);
         int opc;
         do {
-            System.out.println("Que movimiento te gustaría hacer\n1--Agregar al inventario\n2--Eliminar el inventario\n3--Ver el inventario");
+            System.out.println("Que movimiento te gustaría hacer\n1.Agregar al inventario\n2.Eliminar el inventario\n3.Ver el inventario");
             opc = leer.nextInt();
 
             if (opc == 1) {
@@ -127,10 +127,10 @@ public class Principal {
         Scanner leer =  new Scanner (System.in);
         int opcpedido;
         do {
-            System.out.println("INGRESA LO QUE DESEA REALIZAR");
-            System.out.println("1)REALIZAR PEDIDO");
-            System.out.println("2)VER LISTA PEDIDO");
-            System.out.println("3)MODIFICAR PEDIDO");
+            System.out.println("Ingresa lo que desea realizar ");
+            System.out.println("1.Realizar Pedido");
+            System.out.println("2.Ver lista pedido");
+            System.out.println("3.Modificar pedido");
             opcpedido=leer.nextInt();
         
         switch (opcpedido) {
@@ -142,7 +142,7 @@ public class Principal {
 
             break;
             case 3 :
-             System.out.println("INGRESA EL ID DEL PEDIDO A MODIFICAR ");
+             System.out.println("Ingresa el ID del pedido a modificar");
             int idPedido=leer.nextInt();
             pedido.modificarPedido(idPedido, inventario, uniformes, pantalones, playeras);
              break;
